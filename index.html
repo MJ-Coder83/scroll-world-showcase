@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Scroll World Showcase</title>
+  <meta name="description" content="Scroll-world skill showcase: stock video POC driven by the scrub engine." />
+  <style>
+    /* Skill base tokens */
+    :root, .sw-root {
+      --sw-bg: #F5EDE0;
+      --sw-ink: #241d2b;
+      --sw-ink-soft: #6a6072;
+      --sw-accent: #8a7bb5;
+      --sw-font-display: ui-rounded,"SF Pro Rounded","Segoe UI",system-ui,sans-serif;
+      --sw-font-body: system-ui,sans-serif;
+    }
+    html, body { margin: 0; background: var(--sw-bg); color: var(--sw-ink); font-family: var(--sw-font-body); }
+    #top { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div id="top"></div>
+  <div id="world"></div>
+
+  <script src="scrub-engine.js"></script>
+  <script>
+    mountScrollWorld(document.getElementById('world'), {
+      brand: { name: 'Scroll World', href: '#top' },
+      hint: 'scroll to fly in',
+      nav: true,
+      atmosphere: true,
+      sections: [
+        {
+          id: 'scene-a', label: '01',
+          eyebrow: 'SKILL OVERVIEW',
+          title: 'Scroll World',
+          body: 'A scroll-scrubbed camera-flight engine driven by stock video, still fallbacks, and additive motion layers.',
+          tags: ['Skill','Scrub engine','Standalone'],
+          accent: '#E94560',
+          still: 'assets/still_01.png', stillMobile: 'assets/still_01.png',
+          clip: 'assets/vid/01.mp4', clipMobile: 'assets/vid/01.mp4',
+          scroll: 1.6, linger: 0.15
+        },
+        {
+          id: 'scene-b', label: '02',
+          eyebrow: 'ENGINE',
+          title: 'Scrub, don\'t play',
+          body: 'One seek per raf per segment. LERP-driven, dissolve-keyed, mobile-aware, with reduced-motion fallback to stills.',
+          tags: ['requestAnimationFrame','seek','lerp'],
+          accent: '#8a7bb5',
+          still: 'assets/still_02.png', stillMobile: 'assets/still_02.png',
+          clip: 'assets/vid/02.mp4', clipMobile: 'assets/vid/02.mp4',
+          scroll: 1.4, linger: 0.2
+        },
+        {
+          id: 'scene-c', label: '03',
+          eyebrow: 'STAGES',
+          title: 'Dives and connectors',
+          body: 'Dives bring sections to life. Connectors lock adjacent scenes temporally so the flight never breaks.',
+          tags: ['Dive','Connect','Seam'],
+          accent: '#F2994A',
+          still: 'assets/still_03.png', stillMobile: 'assets/still_03.png',
+          clip: 'assets/vid/03.mp4', clipMobile: 'assets/vid/03.mp4',
+          scroll: 1.3, linger: 0.0
+        },
+        {
+          id: 'scene-d', label: '04',
+          eyebrow: 'ATMOSPHERE',
+          title: 'Particles, glow, vignette',
+          body: 'Additive layers without impacting scrub cost. Stars drift, glow stacks, vignettes frame the copy lane.',
+          tags: ['Particles','Glow','Layer'],
+          accent: '#F2C94C',
+          still: 'assets/still_04.png', stillMobile: 'assets/still_04.png',
+          clip: 'assets/vid/04.mp4', clipMobile: 'assets/vid/04.mp4',
+          scroll: 1.2, linger: 0.15
+        },
+        {
+          id: 'scene-e', label: '05',
+          eyebrow: 'MOBILE',
+          title: 'Native portrait, not crops',
+          body: 'This skill favors a native 9:16 pipeline. Coarse device tuning compacts seeks and keeps drafts cheap.',
+          tags: ['9:16','Mobile-first','lazy'],
+          accent: '#E9C46A',
+          still: 'assets/still_05.png', stillMobile: 'assets/still_05.png',
+          clip: 'assets/vid/05.mp4', clipMobile: 'assets/vid/05.mp4',
+          scroll: 1.4, linger: 0.0
+        },
+        {
+          id: 'scene-f', label: '06',
+          eyebrow: 'SOURCE',
+          title: 'Open and forkable',
+          body: 'Drop into any stack. Adapt sections, swap clips, retheme tokens. This page is a proof of concept for any MP4.',
+          tags: ['MIT','Drop-in','Open source'],
+          accent: '#9B7EBD',
+          still: 'assets/still_05.png', stillMobile: 'assets/still_05.png',
+          clip: 'assets/vid/01.mp4', clipMobile: 'assets/vid/01.mp4',
+          scroll: 1.6, linger: 0.0,
+          cta: {
+            primary: { label: 'View skill repo', href: 'https://github.com/oso95/scroll-world' },
+            secondary: { label: 'Explore on GitHub', href: 'https://github.com/oso95/scroll-world' }
+          }
+        }
+      ],
+      connectors: [
+        'assets/vid/01.mp4',
+        'assets/vid/02.mp4',
+        'assets/vid/03.mp4',
+        'assets/vid/04.mp4',
+        'assets/vid/05.mp4'
+      ],
+      connectorsMobile: [
+        'assets/vid/02.mp4',
+        'assets/vid/03.mp4',
+        'assets/vid/04.mp4',
+        'assets/vid/05.mp4',
+        'assets/vid/01.mp4'
+      ]
+    });
+  </script>
+</body>
+</html>
